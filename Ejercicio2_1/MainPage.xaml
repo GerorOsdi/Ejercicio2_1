@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ejercicio2_1.MainPage">
+    <StackLayout>
+    <Picker Title="Selecciones una Región" x:Name="pickRegiones"
+                         TitleColor="Black" SelectedIndexChanged="Picker_SelectedIndexChanged">
+        <Picker.ItemsSource>
+            <x:Array Type="{x:Type x:String}">
+                <x:String>America</x:String>
+                <x:String>Europe</x:String>
+                <x:String>Asia</x:String>
+                <x:String>Oceania</x:String>
+                </x:Array> 
+        </Picker.ItemsSource>
+    </Picker>
+
+    <CollectionView x:Name="lstRegiones" SelectionMode="Single" SelectionChanged="lstRegiones_SelectionChanged">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Frame Padding="5" CornerRadius="10" IsClippedToBounds="False">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".3*"/>
+                            <ColumnDefinition Width="0.7*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".5*"/>
+                            <RowDefinition Height=".5*"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.RowSpan="2" Source="{Binding flags.png}"/>
+                        <Label Grid.Column="1" FontAttributes="Bold" Text="{Binding name.common}"/>
+                        <Label Grid.Column="1" Grid.Row="1" Text="Capital:"/>
+                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding capital[0]}" Padding="50,0,0,0"/>
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+    </StackLayout>
+</ContentPage>
